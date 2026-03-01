@@ -15,7 +15,11 @@
 
 <!-- LA CARTE INTERACTIVE -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> 
 
+<!-- GRAPHIQUE DE POLLUTION -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- SEO TIPS -->
 <meta name="description" content="Mobilité propre à Douala : vélo, marche et transport durable pour un air plus sain au Cameroun. Tribune citoyenne pour Pedal For Clean Air, transports urbains, santé, environnement.">
@@ -54,7 +58,7 @@
 
 <nav class="floating-nav">
 
-<div class="nav-logo"> 
+<div class="nav-logo">
 🌿 Mobilité Propre
 </div>
 
@@ -65,8 +69,22 @@
 <ul class="nav-links">
 
 <li><a href="#article">Manifeste</a></li>
+
 <li><a href="#impact">Impact</a></li>
+
 <li><a href="#engagement">Engagement</a></li>
+
+<li><a href="#vision">Vision 2035</a></li>
+
+<li><a href="#timeline">Transition</a></li>
+
+<li><a href="#map">Carte Douala</a></li>
+
+<li><a href="#douala-map">Carte</a></li>
+
+<li><a href="#data">Données</a></li>
+
+<li><a href="#simulation">Simulation</a></li>
 
 </ul>
 
@@ -75,6 +93,17 @@
 <header class="hero">
 
 <div class="aurora"></div>
+<!-- Skyline animée derrière le hero -->
+<div class="douala-skyline">
+
+<svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+
+<path d="M0 180 L50 160 L80 170 L120 150 L160 165 L200 140 L250 160 L300 130 L350 150 L400 120 L450 140 L500 110 L550 135 L600 100 L650 120 L700 90 L750 115 L800 85 L850 110 L900 80 L950 105 L1000 90 L1050 110 L1100 100 L1150 120 L1200 100 L1200 200 L0 200 Z"></path>
+
+</svg>
+
+</div>
+<!-- END -->
 
 <div class="overlay"></div>
 
@@ -103,6 +132,20 @@ Votre navigateur ne supporte pas la vidéo.
 </div>
 
 </section>
+
+<!-- GRAPHIQUE DE POLLUTION URBAINE -->
+<section id="data" class="data-section">
+
+<div class="container">
+
+<h2>Pollution vs mobilité durable</h2>
+
+<canvas id="pollutionChart"></canvas>
+
+</div>
+
+</section>
+<!-- END -->
 
 <section id="article" class="article-section">
 
@@ -178,6 +221,50 @@ Votre navigateur ne supporte pas la vidéo.
 </div>
 
 </section>
+
+<!-- IMPACT CITOYEN -->
+<section id="impact2" class="impact-section2">
+
+<div class="container">
+
+<h2>Impact citoyen</h2>
+<p class="impact-intro">
+Et si des milliers de citoyens pédalaient pour respirer mieux ?
+Découvre l'impact écologique potentiel pour Douala.
+</p>
+
+<div class="impact-calculator">
+
+<label for="citizens">Nombre de citoyens qui utilisent le vélo :</label>
+
+<input type="range" id="citizens" min="100" max="10000" step="100" value="1000">
+
+<div class="impact-values">
+
+<div class="impact-card2">
+<h3 id="citizen-count">1000</h3>
+<p>citoyens engagés</p>
+</div>
+
+<div class="impact-card2">
+<h3 id="co2-saved">0</h3>
+<p>tonnes de CO₂ économisées / an</p>
+</div>
+
+<div class="impact-card2">
+<h3 id="cars-removed">0</h3>
+<p>voitures retirées des routes</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- END -->
+
 
 <!-- ENGAGEMENT -->
 <section id="engagement" class="engagement-section">
@@ -259,7 +346,7 @@ Demain Douala respirera.<br><br>
 
 </section>
 <!--vvvvvv -->
-<section class="vision-section">
+<section id="vision" class="vision-section">
 
 <div class="container">
 
@@ -299,7 +386,7 @@ Imaginer Douala en 2035, c'est imaginer une ville où l'air est plus léger, les
 <!-- vvvvvvvvvvvvvvvvvvvvvv -->
 
 <!-- cccccccccccc -->
- <section class="timeline-section">
+ <section id="timeline" class="timeline-section">
 
 <div class="container">
 
@@ -334,12 +421,16 @@ Imaginer Douala en 2035, c'est imaginer une ville où l'air est plus léger, les
 </section>
 <!-- cccccc -->
 
-<section class="map-section">
+<section id="map" class="map-section">
 
 <div class="container">
 
 <h2>Carte de la mobilité propre à Douala</h2>
 
+<p class="map-intro">
+Imaginez un réseau cyclable reliant les quartiers clés de la ville.
+La mobilité propre peut transformer Douala.
+</p>
 <p>Découvrez les zones clés où la mobilité douce peut transformer la ville.</p>
 
 <div class="map-container">
@@ -351,6 +442,22 @@ loading="lazy">
 </iframe> -->
 <!-- EST SENCE REMPLACER <iframe> -->
 <div id="doualaMap"></div>
+<!-- <section id="douala-map" class="map-section">
+
+<div class="container">
+
+<h2>Mobilité propre à Douala</h2>
+
+<p class="map-intro">
+Imagine un réseau cyclable reliant les quartiers clés de la ville.
+La mobilité propre peut transformer Douala.
+</p>
+
+<div id="map"></div>
+
+</div>
+
+</section> -->
 <!-- END -->
 
 </div>
@@ -358,7 +465,31 @@ loading="lazy">
 </div>
 
 </section>
-<!-- fin CARTE MOBILITÉ PROPRE DE DOUALA -->
+<!-- fin CARTE MOBILITÉ PROPRE DE DOUALA --> 
+
+<!-- simulateur piste recyclaBLE -->
+<section id="simulation" class="simulation-section">
+
+<div class="container">
+
+<h2>Simulation : pistes cyclables</h2>
+
+<p>
+Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
+</p>
+
+<input type="range" id="bikeKm" min="5" max="150" value="20">
+
+<h3>
+<span id="kmValue">20</span> km de pistes cyclables
+</h3>
+
+<p id="impactResult"></p>
+
+</div>
+
+</section>
+<!-- END -->
 
 <section class="co2-section">
 
@@ -396,6 +527,34 @@ loading="lazy">
 🚴  🏃
 
 </div>
+
+<!-- Mode sombre automatique 🌙 -->
+<button class="dark-toggle">🌙</button>
+<!-- Section partage réseaux sociaux -->
+<section class="share-section">
+
+<div class="container">
+
+<h2>Partager le mouvement</h2>
+
+<p>Faisons connaître la mobilité propre au Cameroun.</p>
+
+<div class="share-buttons">
+
+<a href="#" class="share-btn">Facebook</a>
+
+<a href="#" class="share-btn">LinkedIn</a>
+
+<a href="#" class="share-btn">Twitter</a>
+
+<a href="#" class="share-btn">WhatsApp</a>
+
+</div>
+
+</div>
+
+</section>
+<!-- END -->
 
 <footer>
 
@@ -596,29 +755,58 @@ scroll * 0.5 + "px";
 const map = L.map('doualaMap').setView([4.0511, 9.7679], 12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution:'© OpenStreetMap'
+    attribution:'© OpenStreetMap'
 }).addTo(map);
 
-L.marker([4.0511, 9.7679])
-.addTo(map)
-.bindPopup("Akwa : zone stratégique pour la mobilité douce");
+// --- Tes marqueurs existants ---
+L.marker([4.0511, 9.7679]).addTo(map).bindPopup("Akwa : zone stratégique pour la mobilité douce");
+L.marker([4.0483, 9.7043]).addTo(map).bindPopup("Ndokoti : réduire les embouteillages grâce au vélo");
+L.marker([4.0615, 9.7012]).addTo(map).bindPopup("Deido : potentiel pour pistes cyclables");
+L.marker([4.0587, 9.6920]).addTo(map).bindPopup("Bonanjo : centre administratif accessible à pied");
+L.marker([4.050, 9.730]).addTo(map).bindPopup("Bessengue — quartier résidentiel");
 
-L.marker([4.0483, 9.7043])
-.addTo(map)
-.bindPopup("Ndokoti : réduire les embouteillages grâce au vélo");
+// --- Nouveaux quartiers ajoutés ---
 
-L.marker([4.0615, 9.7012])
-.addTo(map)
-.bindPopup("Deido : potentiel pour pistes cyclables");
+// Bonabéri (Rive droite, crucial pour la décongestion du pont)
+L.marker([4.0750, 9.6700]).addTo(map).bindPopup("Bonabéri : extension urbaine et défi de liaison");
 
-L.marker([4.0587, 9.6920])
-.addTo(map)
-.bindPopup("Bonanjo : centre administratif accessible à pied");
+// Logpom
+L.marker([4.0580, 9.7550]).addTo(map).bindPopup("Logpom : zone résidentielle à forte densité");
 
+// Logbessou
+L.marker([4.0850, 9.7620]).addTo(map).bindPopup("Logbessou : pôle universitaire et résidentiel");
+
+// Ndogbong
+L.marker([4.0450, 9.7420]).addTo(map).bindPopup("Ndogbong : zone mixte (habitat et éducation)");
+
+// Yassa (Entrée Est)
+L.marker([3.9900, 9.7850]).addTo(map).bindPopup("Yassa : porte d'entrée Est de la ville");
+
+// Bonapriso (Quartier chic et aéré, idéal pour la marche)
+L.marker([4.0300, 9.6950]).addTo(map).bindPopup("Bonapriso : potentiel élevé pour zones piétonnes");
+
+// --- Bonus : Deux zones stratégiques ---
+
+// Kotto
+L.marker([4.0720, 9.7480]).addTo(map).bindPopup("Kotto : nouveau centre de vie urbain");
+
+// Japoma
+L.marker([4.0050, 9.8350]).addTo(map).bindPopup("Japoma : zone du complexe sportif et extension future");
+
+// --- Ajouts récents ---
+
+// Ndogpassi (Entrée Est, zone à forte densité populaire)
+L.marker([4.0150, 9.7750]).addTo(map).bindPopup("Ndogpassi : pôle d'échanges et de commerce");
+
+// Brazzaville (Quartier historique entre Akwa et l'aéroport)
+L.marker([4.0320, 9.7180]).addTo(map).bindPopup("Brazzaville : densification urbaine et proximité centre");
+
+// Logbessou II (Extension vers le Nord-Est)
+L.marker([4.0920, 9.7700]).addTo(map).bindPopup("Logbessou II : nouvelle zone résidentielle en hauteur");
 </script>
 <!-- END -->
 <!-- ANIMATION, VELO QUI TRAVERSE LA PAGE AU SCROLL -->
- <script>
+<script>
 
 window.addEventListener("scroll", () => {
 
@@ -636,6 +824,191 @@ bike.style.left = progress * window.innerWidth + "px";
 });
 
 </script>
+<!-- END --> 
+<!-- MODE SOMBRE AAUTO -->
+<script>
+
+const darkBtn = document.querySelector(".dark-toggle");
+
+darkBtn.addEventListener("click", () => {
+
+document.body.classList.toggle("dark-mode");
+
+});
+
+</script>
+<!-- END --> 
+
+<!-- Bouton retour en haut ↑ -->
+<script>
+
+const scrollBtn = document.getElementById("scrollTop");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY > 300){
+
+scrollBtn.style.display = "block";
+
+}else{
+
+scrollBtn.style.display = "none";
+
+}
+
+});
+
+scrollBtn.onclick = () => {
+
+window.scrollTo({
+
+top:0,
+behavior:"smooth"
+
+});
+
+};
+
+</script>
 <!-- END -->
+
+<!-- IMPACT CITOYEN -->
+<script>
+    const citizensSlider = document.getElementById("citizens");
+const citizenCount = document.getElementById("citizen-count");
+const co2Saved = document.getElementById("co2-saved");
+const carsRemoved = document.getElementById("cars-removed");
+
+function updateImpact() {
+
+let citizens = citizensSlider.value;
+
+citizenCount.textContent = citizens;
+
+let co2 = (citizens * 0.2).toFixed(1);
+let cars = Math.floor(citizens * 0.5);
+
+co2Saved.textContent = co2;
+carsRemoved.textContent = cars;
+
+}
+
+citizensSlider.addEventListener("input", updateImpact);
+
+updateImpact();
+</script>
+<!-- END -->
+
+<!-- LA SECTION mAP REELLE DE DOUALA -->
+<!-- <script>
+    var map = L.map('map').setView([4.0511, 9.7679], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+maxZoom: 19,
+
+}).addTo(map);
+
+L.marker([4.048, 9.704]).addTo(map)
+.bindPopup("Akwa — centre économique");
+
+L.marker([4.060, 9.692]).addTo(map)
+.bindPopup("Bonanjo — centre administratif");
+
+L.marker([4.072, 9.755]).addTo(map)
+.bindPopup("Ndokoti — nœud de transport");
+
+L.marker([4.050, 9.730]).addTo(map)
+.bindPopup("Bessengue — quartier résidentiel");
+</script> -->
+
+<!-- GRAPHIQUE DE POLLUTION URBAINE -->
+<script>
+    const ctx = document.getElementById('pollutionChart');
+
+new Chart(ctx, {
+
+type: 'line',
+options: {
+    responsive: true,
+    plugins: {
+        legend: {
+            display: true,
+            position: 'top'
+        }
+    },
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+},
+data: {
+
+labels: ["2025","2026","2027","2028","2029","2030"],
+
+datasets: [
+
+{
+
+label: "Pollution automobile",
+
+data: [100,110,120,130,140,150],
+
+borderWidth:3
+
+},
+
+{
+
+label: "Usage du vélo",
+
+data: [5,15,25,40,60,80],
+
+borderWidth:3
+
+}
+
+]
+
+},
+
+options:{
+
+responsive:true
+
+}
+
+});
+</script> 
+
+<!-- SIMULATEURPISTE RECYCLABLE -->
+<script>
+    const kmSlider = document.getElementById("bikeKm");
+const kmValue = document.getElementById("kmValue");
+const impactResult = document.getElementById("impactResult");
+
+function updateSimulation(){
+
+let km = kmSlider.value;
+
+kmValue.textContent = km;
+
+let citizens = km * 500;
+
+impactResult.textContent =
+"Environ " + citizens +
+" citoyens pourraient adopter le vélo quotidiennement.";
+
+}
+
+kmSlider.addEventListener("input", updateSimulation);
+
+updateSimulation();
+</script>
+
+<!-- Bouton retour en haut ↑ -->
+<button id="scrollTop">↑</button>
+
 </body>
 </html>
