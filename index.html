@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Respirer Mieux | Engagement Mobilité Propre Cameroun</title>
+
+<meta name="description" content="Tribune citoyenne sur la mobilité propre à Douala. Pédaler pour respirer, respirer pour vivre.">
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="floating-nav">
+
+<div class="nav-logo">
+🌿 Mobilité Propre
+</div>
+
+<div class="menu-toggle">
+☰
+</div>
+
+<ul class="nav-links">
+
+<li><a href="#article">Manifeste</a></li>
+<li><a href="#impact">Impact</a></li>
+<li><a href="#engagement">Engagement</a></li>
+
+</ul>
+
+</nav>
+
+<header class="hero">
+
+<div class="aurora"></div>
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+<h1 style="color:white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">MON SOUFFLE, MA LIBERTÉ</h1>
+<p>Ambassadeur de la Mobilité Propre à Douala</p>
+
+<a href="#article" class="btn">Lire le manifeste</a>
+</div>
+
+</header>
+
+<section class="video-section">
+
+<h2 style="color:darkred; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Le Souffle de la Liberté</h2>
+
+<div class="video-container">
+
+<video controls poster="assets/thumb.jpg">
+<source src="assets/video-reel.mp4" type="video/mp4">
+Votre navigateur ne supporte pas la vidéo.
+</video>
+
+</div>
+
+</section>
+
+<section id="article" class="article-section">
+
+<div class="container">
+
+<span class="badge">Tribune d'opinion</span>
+
+<h2>Douala à bout de souffle : le nouveau leadership</h2>
+
+<div class="content">
+
+<p><strong>Chaque matin</strong>, Douala se réveille dans un brouillard qui n’est pas celui de la mer. C’est la poussière, la fumée des moteurs fatigués et l’impatience des klaxons coincés dans les embouteillages.</p>
+
+<p>Dans ces rues saturées, respirer devient un acte presque politique. Pourtant, une autre voie existe. Une voie silencieuse, simple, humaine : celle de la mobilité propre.</p>
+
+<blockquote class="poetic-quote">
+"Pédaler, c'est choisir que ma santé vaut plus qu'un bouchon étouffant."
+</blockquote>
+
+<p>Choisir le vélo, marcher davantage, soutenir des transports urbains plus propres, ce n’est pas seulement changer de moyen de déplacement. C’est changer notre manière d’habiter la ville.</p>
+
+<p>Douala mérite de respirer. Et chacun de nous peut devenir une partie de cette respiration collective.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- IMPACT -->
+<section id="impact" class="impact-section">
+
+<h2>Impact d'une Mobilité Propre</h2>
+
+<div class="impact-grid">
+
+<div class="impact-card">
+<h1>🚴</h1>
+<h3>1 vélo = 0 émission</h3>
+<p>Chaque trajet à vélo réduit immédiatement la pollution urbaine.</p>
+</div>
+
+<div class="impact-card">
+<h1>🌍</h1>
+<h3>Moins de pollution</h3>
+<p>Une ville avec plus de mobilité douce respire mieux.</p>
+</div>
+
+<div class="impact-card">
+<h1>💚</h1>
+<h3>Meilleure santé</h3>
+<p>Moins de pollution signifie moins de maladies respiratoires.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ENGAGEMENT -->
+<section id="engagement" class="engagement-section">
+
+<div class="engagement-box">
+
+<h2>Pourquoi je m'engage</h2>
+
+<p>
+Je crois profondément que respirer un air propre ne devrait pas être un privilège.
+À Douala, chaque embouteillage rappelle combien notre ville étouffe.
+
+Mon engagement pour la mobilité propre est simple :
+encourager des modes de déplacement plus humains,
+plus silencieux et plus respectueux de notre environnement.
+
+Pédaler, marcher, repenser la ville —
+ce sont de petits gestes qui peuvent transformer notre avenir collectif.
+</p>
+
+</div>
+
+</section>
+
+<section class="poetry-section">
+
+<div class="poetry-card">
+
+<h3>L'Oxygène de mon Pays</h3>
+
+<p class="poem-text">
+
+Écoute le battement de Douala...<br>
+Ce n'est pas le klaxon qui insulte,<br>
+C'est le silence de mes pas sur le goudron.<br><br>
+
+Quand la ville respire enfin,<br>
+C'est tout un peuple qui se relève.<br><br>
+
+<strong>#PedalForCleanAir</strong>
+
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 — Candidature Concours Mobilité Propre | Clean Air Initiative Cameroon</p>
+
+</footer>
+
+
+<!-- SCRIPT ANIMATION SCROLL -->
+<script>
+
+const elements = document.querySelectorAll(
+".video-container, .container, .impact-card, .engagement-box"
+);
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+});
+
+elements.forEach(el => observer.observe(el));
+
+</script>
+
+<script>
+
+const hero = document.querySelector(".hero");
+
+hero.addEventListener("mousemove", e => {
+
+const x = e.clientX;
+const y = e.clientY;
+
+hero.style.backgroundPosition =
+`${50 + x/50}% ${50 + y/50}%`;
+
+});
+
+</script>
+
+
+<script>
+
+const toggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+toggle.addEventListener("click", () => {
+
+navLinks.classList.toggle("show");
+
+});
+
+</script>
+
+
+</body>
+</html>
