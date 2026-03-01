@@ -11,7 +11,11 @@
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+
+<!-- LA CARTE INTERACTIVE -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
 
 <!-- SEO TIPS -->
 <meta name="description" content="Mobilité propre à Douala : vélo, marche et transport durable pour un air plus sain au Cameroun. Tribune citoyenne pour Pedal For Clean Air, transports urbains, santé, environnement.">
@@ -45,9 +49,12 @@
 
 <body>
 
+<!-- Particules écologiques animées (air pur) -->
+<canvas id="particles"></canvas>
+
 <nav class="floating-nav">
 
-<div class="nav-logo">
+<div class="nav-logo"> 
 🌿 Mobilité Propre
 </div>
 
@@ -79,8 +86,10 @@
 </div>
 
 </header>
+<canvas id="particles"></canvas>
 
 <section class="video-section">
+    <canvas id="particles"></canvas>
 
 <h2 style="color:darkred; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Le Souffle de la Liberté</h2>
 
@@ -335,11 +344,14 @@ Imaginer Douala en 2035, c'est imaginer une ville où l'air est plus léger, les
 
 <div class="map-container">
 
-<iframe 
+<!-- <iframe 
 src="https://www.openstreetmap.org/export/embed.html?bbox=9.65%2C4.02%2C9.80%2C4.10&amp;layer=mapnik"
 style="border:0"
 loading="lazy">
-</iframe>
+</iframe> -->
+<!-- EST SENCE REMPLACER <iframe> -->
+<div id="doualaMap"></div>
+<!-- END -->
 
 </div>
 
@@ -347,6 +359,43 @@ loading="lazy">
 
 </section>
 <!-- fin CARTE MOBILITÉ PROPRE DE DOUALA -->
+
+<section class="co2-section">
+
+<h2>CO₂ économisé par la mobilité propre</h2>
+
+<div class="co2-box">
+
+<span id="co2">0</span>
+<p>grammes de CO₂ évités aujourd'hui</p>
+
+</div>
+
+</section>
+<!-- CO22222222 -->
+
+<!-- SCORE ENV -->
+<section class="score-section">
+
+<h2>Score Mobilité Propre</h2>
+
+<div class="score-bar">
+
+<div class="score-progress" id="score"></div>
+
+</div>
+
+<p id="scoreText">Impact citoyen : 0%</p>
+
+</section>
+<!-- END SCORE --> 
+
+<!-- Animation vélo qui traverse la page au scroll -->
+<div class="bike-scroll">
+
+🚴  🏃
+
+</div>
 
 <footer>
 
@@ -359,7 +408,7 @@ loading="lazy">
 <script>
 
 const elements = document.querySelectorAll(
-".video-container, .container, .impact-card, .engagement-box"
+".video-container, .container, .impact-card, .engagement-box, .timeline-item"
 );
 
 const observer = new IntersectionObserver(entries => {
@@ -394,6 +443,19 @@ hero.style.backgroundPosition =
 
 });
 
+// LA LUMIERE QUI SUIT LA SOURIS/LE CURSEUR
+hero.addEventListener("mousemove", e => {
+
+const rect = hero.getBoundingClientRect();
+
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+
+hero.style.setProperty("--x", x + "px");
+hero.style.setProperty("--y", y + "px");
+
+});
+
 </script>
 
 
@@ -410,6 +472,170 @@ navLinks.classList.toggle("show");
 
 </script>
 
+<!-- STYLE PARTICULES -->
+<script>
 
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<60;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2+1,
+d:Math.random()*1
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(46,204,113,0.3)";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+
+});
+
+update();
+
+}
+
+function update(){
+
+particles.forEach(p=>{
+
+p.y += p.d;
+
+if(p.y>canvas.height){
+
+p.y=0;
+p.x=Math.random()*canvas.width;
+
+}
+
+});
+
+}
+
+setInterval(draw,33);
+
+</script>
+
+<!-- CO2 -->
+<script>
+
+let counter = 0;
+
+setInterval(()=>{
+
+counter += Math.floor(Math.random()*10);
+
+document.getElementById("co2").innerText = counter;
+
+},1000);
+
+</script>
+<!-- SCORE ENV SCRIPT -->
+<script>
+
+let score = 0;
+
+function updateScore(){
+
+if(score<85){
+
+score += 5;
+
+document.getElementById("score").style.width = score + "%";
+
+document.getElementById("scoreText").innerText =
+"Impact citoyen : " + score + "%";
+
+}
+
+}
+
+setInterval(updateScore,1200);
+
+</script>
+<!-- END -->
+<!-- HERO PARALLAX PRO -->
+<script>
+
+window.addEventListener("scroll", () => {
+
+const scroll = window.pageYOffset;
+
+document.querySelector(".hero").style.backgroundPositionY =
+scroll * 0.5 + "px";
+
+});
+
+</script>
+<!-- END -->
+<!-- LACARTE INTERACTIVE -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- END -->
+<!-- POUR LA MAP -->
+<script>
+
+const map = L.map('doualaMap').setView([4.0511, 9.7679], 12);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution:'© OpenStreetMap'
+}).addTo(map);
+
+L.marker([4.0511, 9.7679])
+.addTo(map)
+.bindPopup("Akwa : zone stratégique pour la mobilité douce");
+
+L.marker([4.0483, 9.7043])
+.addTo(map)
+.bindPopup("Ndokoti : réduire les embouteillages grâce au vélo");
+
+L.marker([4.0615, 9.7012])
+.addTo(map)
+.bindPopup("Deido : potentiel pour pistes cyclables");
+
+L.marker([4.0587, 9.6920])
+.addTo(map)
+.bindPopup("Bonanjo : centre administratif accessible à pied");
+
+</script>
+<!-- END -->
+<!-- ANIMATION, VELO QUI TRAVERSE LA PAGE AU SCROLL -->
+ <script>
+
+window.addEventListener("scroll", () => {
+
+const scrollTop = window.scrollY;
+
+const docHeight =
+document.body.scrollHeight - window.innerHeight;
+
+const progress = scrollTop / docHeight;
+
+const bike = document.querySelector(".bike-scroll");
+
+bike.style.left = progress * window.innerWidth + "px";
+
+});
+
+</script>
+<!-- END -->
 </body>
 </html>
