@@ -2,60 +2,109 @@
 <html lang="fr">
 
 <head>
+
+<!-- =====================================================
+METADONNEES PRINCIPALES
+===================================================== -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Respirer Mieux | Engagement Mobilité Propre Cameroun</title>
 
-<meta name="description" content="Tribune citoyenne sur la mobilité propre à Douala. Pédaler pour respirer, respirer pour vivre.">
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
-
-<!-- LA CARTE INTERACTIVE -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> 
-
-<!-- GRAPHIQUE DE POLLUTION -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- SEO TIPS -->
-<meta name="description" content="Mobilité propre à Douala : vélo, marche et transport durable pour un air plus sain au Cameroun. Tribune citoyenne pour Pedal For Clean Air, transports urbains, santé, environnement.">
-
+<meta name="description" content="Mobilité propre à Douala : vélo, marche et transport durable pour un air plus sain au Cameroun.">
 <meta name="keywords" content="mobilité propre Cameroun, Douala, vélo Douala, pollution, vélo, pollution Douala, air propre Cameroun, transport durable Afrique, mobilité active, Pedal for Clean Air">
-
-<meta name="author" content="Ambassadeur Mobilité Propre Cameroun">
-
+<meta name="author" content="EXPEDIT LEOPOLD MBOMDA, Ambassadeur Mobilité Propre Cameroun">
 <meta name="robots" content="index, follow">
 
-<!-- Open Graph (Facebook / LinkedIn) -->
 
-<meta property="og:title" content="Respirer Mieux | Mobilité Propre Cameroun">
+<!-- =====================================================
+POLICE GOOGLE
+===================================================== -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<meta property="og:description" content="Pédaler pour respirer, marcher pour vivre : un engagement citoyen pour un air plus sain à Douala.">
 
-<meta property="og:image" content="assets/hero-douala.jpg">
+<!-- =====================================================
+STYLES PRINCIPAUX
+===================================================== -->
+<link rel="stylesheet" href="style.css">
 
+
+<!-- =====================================================
+PWA (APPLICATION INSTALLABLE)
+===================================================== -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1abc9c">
+
+
+<!-- =====================================================
+LIBRAIRIE CARTE INTERACTIVE (LEAFLET)
+===================================================== -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+<!-- =====================================================
+GRAPHIQUES DE DONNEES (Chart.js)
+===================================================== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- =====================================================
+SEO + PARTAGE RESEAUX
+===================================================== -->
+
+<!-- Facebook / LinkedIn -->
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://mexpeditl.github.io/projet-mobilite-propre/">
+<meta property="og:title" content="Respirer Mieux | Mobilité Propre Douala">
+<meta property="og:description" content="Découvrez comment le vélo et la marche transforment le visage de Douala. Ensemble pour un air pur !">
+<meta property="og:image" content="https://mexpeditl.github.io/projet-mobilite-propre/assets/img-vision2035-1.png">
 
-<meta property="og:url" content="https://respirer-mieux-cameroun.org">
 
 <!-- Twitter -->
-
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Respirer Mieux | Mobilité Propre Cameroun">
-<meta name="twitter:description" content="Pédaler pour un Cameroun qui respire.">
-<meta name="twitter:image" content="assets/hero-douala.jpg">
-<!-- END SEO TIPS -->
+<meta name="twitter:title" content="Respirer Mieux | Mobilité Propre Douala">
+<meta name="twitter:description" content="Pédalons pour un Cameroun qui respire.">
+<meta name="twitter:image" content="https://mexpeditl.github.io/projet-mobilite-propre/assets/img-vision2035-1.png">
+
 </head>
+
+
 
 <body>
 
-<!-- Particules écologiques animées (air pur) -->
+
+<!-- =====================================================
+SPLASH SCREEN (écran de chargement)
+===================================================== -->
+<div id="splash-screen">
+
+<div class="splash-content">
+
+<div class="splash-logo">🚴</div>
+
+<h1>Douala respire mieux</h1>
+
+<p>Mobilité propre • Air sain • Futur durable</p>
+
+<div class="loader"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+PARTICULES ECOLOGIQUES ANIMEES (air pur)
+===================================================== -->
 <canvas id="particles"></canvas>
 
+
+
+<!-- =====================================================
+MENU DE NAVIGATION FLOTTANT
+===================================================== -->
 <nav class="floating-nav">
 
 <div class="nav-logo">
@@ -69,31 +118,47 @@
 <ul class="nav-links">
 
 <li><a href="#article">Manifeste</a></li>
-
 <li><a href="#impact">Impact</a></li>
-
 <li><a href="#engagement">Engagement</a></li>
-
 <li><a href="#vision">Vision 2035</a></li>
-
 <li><a href="#timeline">Transition</a></li>
-
 <li><a href="#map">Carte Douala</a></li>
-
-<li><a href="#douala-map">Carte</a></li>
-
 <li><a href="#data">Données</a></li>
-
 <li><a href="#simulation">Simulation</a></li>
 
 </ul>
 
 </nav>
 
-<header class="hero">
 
+
+
+<!-- =====================================================
+SECTION HERO (BANNIERE PRINCIPALE)
+===================================================== -->
+<header class="hero" background="assets/hero-douala.jpg">
+
+<!--
+ICI TU PEUX METTRE :
+1) une IMAGE hero
+2) une VIDEO hero
+3) une animation CSS
+
+Si image :
+background-image: url("assets/hero-douala.jpg")
+
+Si vidéo :
+<video autoplay muted loop>
+<source src="assets/hero-video.mp4">
+</video>
+-->
+<video autoplay muted loop>
+<source src="assets/v1.mp4">
+</video>
 <div class="aurora"></div>
-<!-- Skyline animée derrière le hero -->
+
+
+<!-- Skyline animée de Douala -->
 <div class="douala-skyline">
 
 <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
@@ -103,37 +168,56 @@
 </svg>
 
 </div>
-<!-- END -->
+
 
 <div class="overlay"></div>
 
 <div class="hero-content">
-<h1 style="color:white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">MON SOUFFLE, MA LIBERTÉ</h1>
+
+<h1>MON SOUFFLE, MA LIBERTÉ</h1>
+
 <p>Ambassadeur de la Mobilité Propre à Douala</p>
 
 <a href="#article" class="btn">Lire le manifeste</a>
+
 </div>
 
 </header>
-<canvas id="particles"></canvas>
 
+
+
+<!-- =====================================================
+SECTION VIDEO PRINCIPALE
+===================================================== -->
 <section class="video-section">
-    <canvas id="particles"></canvas>
 
-<h2 style="color:darkred; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Le Souffle de la Liberté</h2>
+<h2>Le Souffle de la Liberté</h2>
 
 <div class="video-container">
 
+<!-- 
+VIDEO PRINCIPALE DU PROJET
+EMPLACEMENT :
+
+assets/video-reel.mp4
+-->
+
 <video controls poster="assets/thumb.jpg">
+
 <source src="assets/video-reel.mp4" type="video/mp4">
-Votre navigateur ne supporte pas la vidéo.
+
 </video>
 
 </div>
 
 </section>
 
-<!-- GRAPHIQUE DE POLLUTION URBAINE -->
+
+
+
+<!-- =====================================================
+GRAPHIQUE POLLUTION
+===================================================== -->
 <section id="data" class="data-section">
 
 <div class="container">
@@ -145,8 +229,14 @@ Votre navigateur ne supporte pas la vidéo.
 </div>
 
 </section>
-<!-- END -->
 
+
+
+
+
+<!-- =====================================================
+ARTICLE / MANIFESTE
+===================================================== -->
 <section id="article" class="article-section">
 
 <div class="container">
@@ -157,9 +247,13 @@ Votre navigateur ne supporte pas la vidéo.
 
 <div class="content">
 
-<p><strong>Chaque matin</strong>, Douala se réveille dans un brouillard étrange. Ce n'est pas la brume de l’océan. C’est la fumée des moteurs fatigués, la poussière suspendue au-dessus des carrefours, et l’impatience des klaxons prisonniers des embouteillages.</p>
+<h3>Le réveil dans la brume</h3>
 
-<p>Un jour, bloqué pendant près d'une heure au carrefour Ndokoti, j’ai vu un jeune cycliste passer entre les voitures immobiles. Il avançait calmement, presque silencieusement. Pendant que nous suffoquions dans les gaz d’échappement, lui respirait librement. À cet instant, j’ai compris une chose : l’avenir de nos villes ne sera pas plus bruyant. Il sera plus intelligent.</p>
+<p><strong>Chaque matin</strong>, Douala se réveille dans un brouillard étrange. Ce n'est pas la brume de l’océan ni l’humidité familière des matins tropicaux. C’est la fumée des moteurs fatigués, la poussière suspendue au-dessus des carrefours et l’impatience des klaxons prisonniers des embouteillages.</p>
+
+<p>Le vrombissement des véhicules et l’épaisse fumée noire des échappements ne sont plus seulement des désagréments urbains. Ils sont devenus les symptômes d’une ville qui étouffe lentement. En tant que jeune citoyen camerounais, je refuse de voir le dynamisme économique de notre métropole se payer au prix de notre santé respiratoire.</p>
+
+<p>Un jour, bloqué pendant près d'une heure au carrefour Ndokoti, j’ai vu un jeune cycliste passer entre les voitures immobiles. Il avançait calmement, presque silencieusement. Pendant que nous suffoquions dans les gaz d’échappement, lui respirait librement. À cet instant, j’ai compris une chose simple : l’avenir de nos villes ne sera pas plus bruyant. Il sera plus intelligent.</p>
 
 <p>Dans ces rues saturées, respirer devient presque un acte politique. Respirer devient un choix.</p>
 
@@ -167,17 +261,49 @@ Votre navigateur ne supporte pas la vidéo.
 "Pédaler, ce n'est pas seulement se déplacer. C'est choisir que la vie circule mieux que la fumée."
 </blockquote>
 
-<p>La mobilité propre n'est pas une idée importée des grandes capitales du monde. Elle est profondément adaptée à notre réalité. Dans une ville comme Douala, dense, dynamique et pleine d’énergie humaine, le vélo et la marche représentent une solution simple, accessible et immédiatement efficace.</p>
 
-<p>Chaque trajet à vélo est un embouteillage évité. Chaque kilomètre parcouru à pied est un peu moins de pollution dans l’air que nos enfants respirent.</p>
+<h3>Le constat : une productivité asphyxiée</h3>
 
-<p>Mais au-delà de la technique, la mobilité propre est une question de <strong>leadership citoyen</strong>. Elle demande le courage de changer nos habitudes et d’imaginer une ville pensée pour les humains avant les machines.</p>
+<p>Le transport urbain à Douala est le cœur battant de notre économie. Chaque jour, des milliers de travailleurs, d’étudiants, de commerçants et d’entrepreneurs traversent la ville pour faire vivre cette métropole dynamique. Pourtant, ce cœur s’essouffle.</p>
 
-<p>Être Ambassadeur de la Mobilité Propre, c’est refuser l’idée que le progrès se mesure au nombre de voitures coincées dans un bouchon. Le vrai progrès, c’est une ville où l’on peut marcher, pédaler et respirer librement.</p>
+<p>Les embouteillages interminables, la pollution atmosphérique et les particules fines ne font pas que dégrader notre environnement. Ils affectent directement notre productivité. Les maladies respiratoires, le stress lié au trafic et les heures perdues dans les bouchons représentent un coût humain et économique considérable.</p>
 
-<p>Douala mérite mieux que la fumée. Douala mérite l’horizon.</p>
+<p>Comment construire l’émergence du Cameroun si notre ressource la plus précieuse — la jeunesse — respire un air qui l’affaiblit jour après jour ? Une ville qui étouffe ralentit inévitablement son propre développement.</p>
 
-<p>Et ce changement ne commence pas dans les bureaux ou dans les discours officiels. Il commence sur la route, dans chaque pas, dans chaque coup de pédale.</p>
+
+<h3>La solution : la révolution par le bas (et par les pédales)</h3>
+
+<p>Face à ce défi climatique, sanitaire et économique, la réponse ne viendra pas uniquement de grands projets d’infrastructures. Elle peut aussi commencer par un changement simple mais profond : repenser notre manière de nous déplacer.</p>
+
+<p>La mobilité active — marcher, pédaler, privilégier des moyens de transport plus légers — représente une solution viable, accessible et immédiatement efficace pour une ville comme Douala.</p>
+
+<p><strong>Viable :</strong> le vélo permet de contourner les bouchons légendaires de carrefours comme Ndokoti ou Akwa avec une agilité impressionnante.</p>
+
+<p><strong>Abordable :</strong> dans un contexte d’inflation et de hausse des prix du carburant, le vélo devient un véritable outil de liberté économique pour les étudiants, les travailleurs et les entrepreneurs.</p>
+
+<p><strong>Résiliente :</strong> chaque kilomètre parcouru à vélo est un acte concret pour réduire la pollution et améliorer la qualité de l’air que nous respirons.</p>
+
+<p>La mobilité propre n’est pas une idée importée des grandes capitales du monde. Elle correspond parfaitement à la réalité d’une ville dense, jeune et énergique comme Douala.</p>
+
+
+<h3>Le leadership citoyen : devenir ambassadeur</h3>
+
+<p>Le projet Pedal for Clean Air n’est pas seulement un concours. C’est un appel au leadership citoyen.</p>
+
+<p>Être Ambassadeur de la Mobilité Propre, c’est refuser l’idée que le progrès se mesure au nombre de voitures coincées dans un embouteillage. Le vrai progrès, c’est une ville où l’on peut marcher, pédaler et respirer librement.</p>
+
+<p>Cela signifie aussi briser certains clichés. Pendant longtemps, posséder une voiture a été considéré comme le symbole ultime de réussite sociale. Mais dans une ville saturée par le trafic, le véritable luxe devient peut-être simplement d’arriver à destination en bonne santé.</p>
+
+<p>Nous avons besoin de rues pensées pour les humains avant les machines. Nous avons besoin de pistes cyclables, de trottoirs accessibles et d’une culture de respect mutuel sur la route.</p>
+
+
+<h3>Un pacte pour l'avenir</h3>
+
+<p>La transformation d’une ville ne commence pas seulement dans les bureaux ou dans les discours officiels. Elle commence sur la route, dans chaque pas, dans chaque coup de pédale.</p>
+
+<p>Choisir la mobilité durable, ce n’est pas seulement changer de moyen de transport. C’est redonner à Douala la capacité de respirer, de rêver et de prospérer.</p>
+
+<p>Mon engagement est simple : chaque coup de pédale est une promesse faite aux générations futures.</p>
 
 <p><strong>Faisons avancer le Cameroun, un souffle à la fois.</strong></p>
 
@@ -187,12 +313,16 @@ Votre navigateur ne supporte pas la vidéo.
 
 </section>
 
-<!-- IMPACT -->
+
+
+<!-- =====================================================
+IMPACT MOBILITE
+===================================================== -->
 <section id="impact" class="impact-section">
 
 <h2>Impact d'une Mobilité Propre</h2>
 
-<div class="impact-grid"> 
+<div class="impact-grid">
 
 <div class="impact-card">
 <h1>🚶</h1>
@@ -222,7 +352,11 @@ Votre navigateur ne supporte pas la vidéo.
 
 </section>
 
-<!-- IMPACT CITOYEN -->
+
+
+<!-- =====================================================
+IMPACT CITOYEN INTERACTIF
+===================================================== -->
 <section id="impact2" class="impact-section2">
 
 <div class="container">
@@ -260,13 +394,13 @@ Découvre l'impact écologique potentiel pour Douala.
 
 </div>
 
-</div>
-
 </section>
-<!-- END -->
 
 
-<!-- ENGAGEMENT -->
+
+<!-- =====================================================
+ENGAGEMENT PERSONNEL
+===================================================== -->
 <section id="engagement" class="engagement-section">
 
 <div class="engagement-box">
@@ -289,10 +423,18 @@ ce sont de petits gestes qui peuvent transformer notre avenir collectif.
 
 </section>
 
+
+
+
+<!-- =====================================================
+POEME
+===================================================== -->
+
 <section class="poetry-section">
 
 <div class="container">
-<span class="badge">Petit Poème</span>
+
+<span class="badge">Poème citoyen</span>
 
 <div class="poetry-card">
 
@@ -302,41 +444,99 @@ ce sont de petits gestes qui peuvent transformer notre avenir collectif.
 
 Écoute…<br>
 Écoute le battement de Douala.<br>
-Ce n’est pas le klaxon qui crie,<br>
-Ce n’est pas le moteur qui suffoque.<br>
-C’est le silence de mes pas sur le goudron du matin.<br><br>
+Ce n’est pas le klaxon qui insulte,<br>
+Ce n’est pas le vieux moteur qui brûle et qui suffoque.<br>
+C’est le silence de mes pas sur le goudron du petit matin.<br><br>
+
 
 Regarde…<br>
-La ville se lève dans un voile gris,<br>
-un rideau de fumée suspendu entre nos rêves et le ciel.<br>
+L’horizon se lève dans un voile gris,<br>
+un rideau de carbone suspendu entre nos rêves et le ciel.<br>
+La ville respire difficilement.<br>
+La fumée grimpe au-dessus des carrefours,<br>
+et nos poumons portent le poids des embouteillages.<br><br>
+
+
+On parle d’émergence,<br>
+on parle de croissance,<br>
+mais parfois on oublie l’essentiel :<br>
+<strong>l’air.</strong><br>
+Cet or invisible que l’on gaspille<br>
+à chaque moteur qui tourne inutilement.<br><br>
+
+
 Mais quelque part, une roue tourne.<br>
 Une chaîne chante.<br>
 Et l’air recommence à circuler.<br><br>
 
-Moi, j’ai choisi ma monture :<br>
+
+Alors moi, j’ai choisi ma monture :<br>
 Deux roues.<br>
 Une route.<br>
-Et la force de mes mollets.<br><br>
+Et la force tranquille de mes mollets.<br><br>
 
-Chaque coup de pédale écrit une phrase,<br>
-Chaque souffle trace une ligne<br>
+
+Je ne suis pas celui qui n’a pas de voiture.<br>
+Je suis celui qui a une longueur d’avance sur le futur.<br><br>
+
+
+Chaque coup de pédale écrit une phrase.<br>
+Chaque goutte de sueur devient une virgule<br>
 dans le grand poème d’un Cameroun qui respire.<br><br>
+
+
+Je ne transporte pas seulement mon corps.<br>
+Je transporte l’espoir d’une ville différente.<br>
+Une ville où les enfants respirent mieux.<br>
+Une ville où l’on entend à nouveau le vent.<br><br>
+
 
 Pédaler pour l’air pur.<br>
 Marcher pour la santé.<br>
 Refuser que nos poumons deviennent des dépotoirs.<br><br>
 
-À l’enfant d’Akwa,<br>
-À la maman de Ndokoti,<br>
-Je dis simplement :<br><br>
 
-<strong>Votre souffle est sacré.<br>
-Votre ville est votre jardin.</strong><br><br>
+À l’enfant d’Akwa,<br>
+à la maman de Ndokoti,<br>
+je dis simplement :<br><br>
+
+
+<strong>
+Votre souffle est sacré.<br>
+Votre ville est votre jardin.
+</strong><br><br>
+
+
+Ce n’est pas seulement un geste écologique.<br>
+C’est un pacte avec la terre de nos ancêtres.<br>
+Parce qu’un pays qui ne respire plus<br>
+est un pays qui ne rêve plus.<br><br>
+
 
 Et si aujourd’hui nous pédalons ensemble,<br>
-Demain Douala respirera.<br><br>
+demain Douala respirera.<br><br>
 
-<strong>#PedalForCleanAir</strong>
+
+<strong>
+Je suis Ambassadeur.<br>
+Je suis le mouvement.<br>
+Je suis l’air frais qui se lève sur le Wouri.
+</strong><br><br>
+
+
+Alors avançons.<br>
+Pédalons.<br>
+Marchons.<br><br>
+
+
+Pour que le vert de notre drapeau<br>
+ne soit plus seulement une couleur,<br>
+mais la réalité de nos forêts<br>
+et la pureté de notre air.<br><br>
+
+
+<strong>#PedalForCleanAir</strong><br>
+<strong>Le Cameroun avance. Proprement.</strong>
 
 </p>
 
@@ -345,7 +545,13 @@ Demain Douala respirera.<br><br>
 </div>
 
 </section>
-<!--vvvvvv -->
+
+
+
+
+<!-- =====================================================
+VISION 2035
+===================================================== -->
 <section id="vision" class="vision-section">
 
 <div class="container">
@@ -383,10 +589,14 @@ Imaginer Douala en 2035, c'est imaginer une ville où l'air est plus léger, les
 </div>
 
 </section>
-<!-- vvvvvvvvvvvvvvvvvvvvvv -->
 
-<!-- cccccccccccc -->
- <section id="timeline" class="timeline-section">
+
+
+
+<!-- =====================================================
+TIMELINE ECOLOGIQUE
+===================================================== -->
+<section id="timeline" class="timeline-section">
 
 <div class="container">
 
@@ -419,64 +629,55 @@ Imaginer Douala en 2035, c'est imaginer une ville où l'air est plus léger, les
 </div>
 
 </section>
-<!-- cccccc -->
 
+
+
+<!-- =====================================================
+CARTE INTERACTIVE DE DOUALA
+===================================================== -->
 <section id="map" class="map-section">
 
 <div class="container">
 
 <h2>Carte de la mobilité propre à Douala</h2>
 
-<p class="map-intro">
-Imaginez un réseau cyclable reliant les quartiers clés de la ville.
-La mobilité propre peut transformer Douala.
-</p>
+<p class="map-intro">Imaginez un réseau cyclable reliant les quartiers clés de la ville.
+La mobilité propre peut transformer Douala.</p>
 <p>Découvrez les zones clés où la mobilité douce peut transformer la ville.</p>
 
 <div class="map-container">
 
-<!-- <iframe 
-src="https://www.openstreetmap.org/export/embed.html?bbox=9.65%2C4.02%2C9.80%2C4.10&amp;layer=mapnik"
-style="border:0"
-loading="lazy">
-</iframe> -->
-<!-- EST SENCE REMPLACER <iframe> -->
+<!--
+CARTE LEAFLET
+
+Les marqueurs seront ajoutés dans script.js
+
+Akwa
+Bonanjo
+Ndokoti
+Bessengue
+-->
+
 <div id="doualaMap"></div>
-<!-- <section id="douala-map" class="map-section">
-
-<div class="container">
-
-<h2>Mobilité propre à Douala</h2>
-
-<p class="map-intro">
-Imagine un réseau cyclable reliant les quartiers clés de la ville.
-La mobilité propre peut transformer Douala.
-</p>
-
-<div id="map"></div>
-
-</div>
-
-</section> -->
-<!-- END -->
 
 </div>
 
 </div>
 
 </section>
-<!-- fin CARTE MOBILITÉ PROPRE DE DOUALA --> 
 
-<!-- simulateur piste recyclaBLE -->
+
+
+<!-- =====================================================
+SIMULATEUR PISTES CYCLABLES
+===================================================== -->
 <section id="simulation" class="simulation-section">
 
 <div class="container">
 
 <h2>Simulation : pistes cyclables</h2>
 
-<p>
-Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
-</p>
+<p>Combien de kilomètres de pistes cyclables peuvent transformer la ville ?</p>
 
 <input type="range" id="bikeKm" min="5" max="150" value="20">
 
@@ -489,8 +690,12 @@ Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
 </div>
 
 </section>
-<!-- END -->
 
+
+
+<!-- =====================================================
+COMPTEUR CO2
+===================================================== -->
 <section class="co2-section">
 
 <h2>CO₂ économisé par la mobilité propre</h2>
@@ -498,14 +703,18 @@ Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
 <div class="co2-box">
 
 <span id="co2">0</span>
+
 <p>grammes de CO₂ évités aujourd'hui</p>
 
 </div>
 
 </section>
-<!-- CO22222222 -->
 
-<!-- SCORE ENV -->
+
+
+<!-- =====================================================
+SCORE ENVIRONNEMENTAL
+===================================================== -->
 <section class="score-section">
 
 <h2>Score Mobilité Propre</h2>
@@ -519,18 +728,30 @@ Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
 <p id="scoreText">Impact citoyen : 0%</p>
 
 </section>
-<!-- END SCORE --> 
 
-<!-- Animation vélo qui traverse la page au scroll -->
+
+
+<!-- =====================================================
+ANIMATION VELO AU SCROLL
+===================================================== -->
 <div class="bike-scroll">
 
-🚴  🏃
+🚴 🏃
 
 </div>
 
-<!-- Mode sombre automatique 🌙 -->
+
+
+<!-- =====================================================
+BOUTON MODE SOMBRE
+===================================================== -->
 <button class="dark-toggle">🌙</button>
-<!-- Section partage réseaux sociaux -->
+
+
+
+<!-- =====================================================
+PARTAGE RESEAUX
+===================================================== -->
 <section class="share-section">
 
 <div class="container">
@@ -542,11 +763,8 @@ Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
 <div class="share-buttons">
 
 <a href="#" class="share-btn">Facebook</a>
-
 <a href="#" class="share-btn">LinkedIn</a>
-
 <a href="#" class="share-btn">Twitter</a>
-
 <a href="#" class="share-btn">WhatsApp</a>
 
 </div>
@@ -554,8 +772,12 @@ Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
 </div>
 
 </section>
-<!-- END -->
 
+
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
 <footer>
 
 <p>© 2026 — Candidature Concours Mobilité Propre | Clean Air Initiative Cameroon</p>
@@ -563,452 +785,19 @@ Combien de kilomètres de pistes cyclables peuvent transformer la ville ?
 </footer>
 
 
-<!-- SCRIPT ANIMATION SCROLL -->
-<script>
 
-const elements = document.querySelectorAll(
-".video-container, .container, .impact-card, .engagement-box, .timeline-item"
-);
+<!-- =====================================================
+BOUTON RETOUR EN HAUT
+===================================================== -->
+<button id="backToTop">⬆</button>
 
-const observer = new IntersectionObserver(entries => {
 
-entries.forEach(entry => {
 
-if(entry.isIntersecting){
+<!-- =====================================================
+SCRIPTS JS PRINCIPAUX
+===================================================== -->
+<script src="script.js"></script>
 
-entry.target.classList.add("show");
-
-}
-
-});
-
-});
-
-elements.forEach(el => observer.observe(el));
-
-</script>
-
-<script>
-
-const hero = document.querySelector(".hero");
-
-hero.addEventListener("mousemove", e => {
-
-const x = e.clientX;
-const y = e.clientY;
-
-hero.style.backgroundPosition =
-`${50 + x/50}% ${50 + y/50}%`;
-
-});
-
-// LA LUMIERE QUI SUIT LA SOURIS/LE CURSEUR
-hero.addEventListener("mousemove", e => {
-
-const rect = hero.getBoundingClientRect();
-
-const x = e.clientX - rect.left;
-const y = e.clientY - rect.top;
-
-hero.style.setProperty("--x", x + "px");
-hero.style.setProperty("--y", y + "px");
-
-});
-
-</script>
-
-
-<script>
-
-const toggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-toggle.addEventListener("click", () => {
-
-navLinks.classList.toggle("show");
-
-});
-
-</script>
-
-<!-- STYLE PARTICULES -->
-<script>
-
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<60;i++){
-
-particles.push({
-
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2+1,
-d:Math.random()*1
-
-});
-
-}
-
-function draw(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="rgba(46,204,113,0.3)";
-
-particles.forEach(p=>{
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-
-});
-
-update();
-
-}
-
-function update(){
-
-particles.forEach(p=>{
-
-p.y += p.d;
-
-if(p.y>canvas.height){
-
-p.y=0;
-p.x=Math.random()*canvas.width;
-
-}
-
-});
-
-}
-
-setInterval(draw,33);
-
-</script>
-
-<!-- CO2 -->
-<script>
-
-let counter = 0;
-
-setInterval(()=>{
-
-counter += Math.floor(Math.random()*10);
-
-document.getElementById("co2").innerText = counter;
-
-},1000);
-
-</script>
-<!-- SCORE ENV SCRIPT -->
-<script>
-
-let score = 0;
-
-function updateScore(){
-
-if(score<85){
-
-score += 5;
-
-document.getElementById("score").style.width = score + "%";
-
-document.getElementById("scoreText").innerText =
-"Impact citoyen : " + score + "%";
-
-}
-
-}
-
-setInterval(updateScore,1200);
-
-</script>
-<!-- END -->
-<!-- HERO PARALLAX PRO -->
-<script>
-
-window.addEventListener("scroll", () => {
-
-const scroll = window.pageYOffset;
-
-document.querySelector(".hero").style.backgroundPositionY =
-scroll * 0.5 + "px";
-
-});
-
-</script>
-<!-- END -->
-<!-- LACARTE INTERACTIVE -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<!-- END -->
-<!-- POUR LA MAP -->
-<script>
-
-const map = L.map('doualaMap').setView([4.0511, 9.7679], 12);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:'© OpenStreetMap'
-}).addTo(map);
-
-// --- Tes marqueurs existants ---
-L.marker([4.0511, 9.7679]).addTo(map).bindPopup("Akwa : zone stratégique pour la mobilité douce");
-L.marker([4.0483, 9.7043]).addTo(map).bindPopup("Ndokoti : réduire les embouteillages grâce au vélo");
-L.marker([4.0615, 9.7012]).addTo(map).bindPopup("Deido : potentiel pour pistes cyclables");
-L.marker([4.0587, 9.6920]).addTo(map).bindPopup("Bonanjo : centre administratif accessible à pied");
-L.marker([4.050, 9.730]).addTo(map).bindPopup("Bessengue — quartier résidentiel");
-
-// --- Nouveaux quartiers ajoutés ---
-
-// Bonabéri (Rive droite, crucial pour la décongestion du pont)
-L.marker([4.0750, 9.6700]).addTo(map).bindPopup("Bonabéri : extension urbaine et défi de liaison");
-
-// Logpom
-L.marker([4.0580, 9.7550]).addTo(map).bindPopup("Logpom : zone résidentielle à forte densité");
-
-// Logbessou
-L.marker([4.0850, 9.7620]).addTo(map).bindPopup("Logbessou : pôle universitaire et résidentiel");
-
-// Ndogbong
-L.marker([4.0450, 9.7420]).addTo(map).bindPopup("Ndogbong : zone mixte (habitat et éducation)");
-
-// Yassa (Entrée Est)
-L.marker([3.9900, 9.7850]).addTo(map).bindPopup("Yassa : porte d'entrée Est de la ville");
-
-// Bonapriso (Quartier chic et aéré, idéal pour la marche)
-L.marker([4.0300, 9.6950]).addTo(map).bindPopup("Bonapriso : potentiel élevé pour zones piétonnes");
-
-// --- Bonus : Deux zones stratégiques ---
-
-// Kotto
-L.marker([4.0720, 9.7480]).addTo(map).bindPopup("Kotto : nouveau centre de vie urbain");
-
-// Japoma
-L.marker([4.0050, 9.8350]).addTo(map).bindPopup("Japoma : zone du complexe sportif et extension future");
-
-// --- Ajouts récents ---
-
-// Ndogpassi (Entrée Est, zone à forte densité populaire)
-L.marker([4.0150, 9.7750]).addTo(map).bindPopup("Ndogpassi : pôle d'échanges et de commerce");
-
-// Brazzaville (Quartier historique entre Akwa et l'aéroport)
-L.marker([4.0320, 9.7180]).addTo(map).bindPopup("Brazzaville : densification urbaine et proximité centre");
-
-// Logbessou II (Extension vers le Nord-Est)
-L.marker([4.0920, 9.7700]).addTo(map).bindPopup("Logbessou II : nouvelle zone résidentielle en hauteur");
-</script>
-<!-- END -->
-<!-- ANIMATION, VELO QUI TRAVERSE LA PAGE AU SCROLL -->
-<script>
-
-window.addEventListener("scroll", () => {
-
-const scrollTop = window.scrollY;
-
-const docHeight =
-document.body.scrollHeight - window.innerHeight;
-
-const progress = scrollTop / docHeight;
-
-const bike = document.querySelector(".bike-scroll");
-
-bike.style.left = progress * window.innerWidth + "px";
-
-});
-
-</script>
-<!-- END --> 
-<!-- MODE SOMBRE AAUTO -->
-<script>
-
-const darkBtn = document.querySelector(".dark-toggle");
-
-darkBtn.addEventListener("click", () => {
-
-document.body.classList.toggle("dark-mode");
-
-});
-
-</script>
-<!-- END --> 
-
-<!-- Bouton retour en haut ↑ -->
-<script>
-
-const scrollBtn = document.getElementById("scrollTop");
-
-window.addEventListener("scroll", () => {
-
-if(window.scrollY > 300){
-
-scrollBtn.style.display = "block";
-
-}else{
-
-scrollBtn.style.display = "none";
-
-}
-
-});
-
-scrollBtn.onclick = () => {
-
-window.scrollTo({
-
-top:0,
-behavior:"smooth"
-
-});
-
-};
-
-</script>
-<!-- END -->
-
-<!-- IMPACT CITOYEN -->
-<script>
-    const citizensSlider = document.getElementById("citizens");
-const citizenCount = document.getElementById("citizen-count");
-const co2Saved = document.getElementById("co2-saved");
-const carsRemoved = document.getElementById("cars-removed");
-
-function updateImpact() {
-
-let citizens = citizensSlider.value;
-
-citizenCount.textContent = citizens;
-
-let co2 = (citizens * 0.2).toFixed(1);
-let cars = Math.floor(citizens * 0.5);
-
-co2Saved.textContent = co2;
-carsRemoved.textContent = cars;
-
-}
-
-citizensSlider.addEventListener("input", updateImpact);
-
-updateImpact();
-</script>
-<!-- END -->
-
-<!-- LA SECTION mAP REELLE DE DOUALA -->
-<!-- <script>
-    var map = L.map('map').setView([4.0511, 9.7679], 13);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-
-maxZoom: 19,
-
-}).addTo(map);
-
-L.marker([4.048, 9.704]).addTo(map)
-.bindPopup("Akwa — centre économique");
-
-L.marker([4.060, 9.692]).addTo(map)
-.bindPopup("Bonanjo — centre administratif");
-
-L.marker([4.072, 9.755]).addTo(map)
-.bindPopup("Ndokoti — nœud de transport");
-
-L.marker([4.050, 9.730]).addTo(map)
-.bindPopup("Bessengue — quartier résidentiel");
-</script> -->
-
-<!-- GRAPHIQUE DE POLLUTION URBAINE -->
-<script>
-    const ctx = document.getElementById('pollutionChart');
-
-new Chart(ctx, {
-
-type: 'line',
-options: {
-    responsive: true,
-    plugins: {
-        legend: {
-            display: true,
-            position: 'top'
-        }
-    },
-    scales: {
-        y: {
-            beginAtZero: true
-        }
-    }
-},
-data: {
-
-labels: ["2025","2026","2027","2028","2029","2030"],
-
-datasets: [
-
-{
-
-label: "Pollution automobile",
-
-data: [100,110,120,130,140,150],
-
-borderWidth:3
-
-},
-
-{
-
-label: "Usage du vélo",
-
-data: [5,15,25,40,60,80],
-
-borderWidth:3
-
-}
-
-]
-
-},
-
-options:{
-
-responsive:true
-
-}
-
-});
-</script> 
-
-<!-- SIMULATEURPISTE RECYCLABLE -->
-<script>
-    const kmSlider = document.getElementById("bikeKm");
-const kmValue = document.getElementById("kmValue");
-const impactResult = document.getElementById("impactResult");
-
-function updateSimulation(){
-
-let km = kmSlider.value;
-
-kmValue.textContent = km;
-
-let citizens = km * 500;
-
-impactResult.textContent =
-"Environ " + citizens +
-" citoyens pourraient adopter le vélo quotidiennement.";
-
-}
-
-kmSlider.addEventListener("input", updateSimulation);
-
-updateSimulation();
-</script>
-
-<!-- Bouton retour en haut ↑ -->
-<button id="scrollTop">↑</button>
 
 </body>
 </html>

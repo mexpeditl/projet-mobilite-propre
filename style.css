@@ -131,7 +131,7 @@ align-items:center;
 justify-content:center;
 text-align:center;
 
-background-image:url("assets/hero-douala.jpg");
+background-image:url("assets/hero-douala.png");
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
@@ -1012,4 +1012,168 @@ width:60%;
 margin:30px auto;
 display:block;
 
+}
+
+
+/* LE LOADER */
+/* SPLASH SCREEN */
+
+#splash-screen{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+
+background:linear-gradient(135deg,#0f172a,#1abc9c);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
+transition:opacity 1s ease, visibility 1s;
+
+}
+
+.splash-content{
+
+text-align:center;
+color:white;
+font-family:"Poppins", sans-serif;
+
+}
+
+.splash-logo{
+
+font-size:60px;
+margin-bottom:20px;
+animation:bikeMove 2s infinite ease-in-out;
+
+}
+
+@keyframes bikeMove{
+
+0%{transform:translateX(-10px)}
+50%{transform:translateX(10px)}
+100%{transform:translateX(-10px)}
+
+}
+
+.loader{
+
+margin-top:20px;
+
+width:40px;
+height:40px;
+
+border:4px solid rgba(255,255,255,0.3);
+border-top:4px solid white;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+
+}
+
+#splash-screen.hide{
+
+opacity:0;
+visibility:hidden;
+
+}
+
+/* ================================
+BOUTON RETOUR EN HAUT
+================================ */
+
+#backToTop{
+position: fixed;
+bottom: 30px;
+right: 20px;
+
+background: #1abc9c;
+color: white;
+
+border: none;
+border-radius: 50PX;
+
+width: 50px;
+height: 35px;
+
+font-size: 22px;
+cursor: pointer;
+
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+display: none;
+
+transition: all 0.3s ease;
+}
+
+#backToTop:hover{
+transform: translateY(-5px);
+background: #16a085;
+}
+
+
+
+
+/* ===============================
+MENU MOBILE
+=============================== */
+
+/* .menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+.nav-links{
+position:absolute;
+top:70px;
+right:0;
+
+background:white;
+
+width:220px;
+
+flex-direction:column;
+
+padding:20px;
+
+transform:translateX(100%);
+
+transition:0.3s;
+}
+
+.nav-links.nav-open{
+transform:translateX(0);
+}
+
+.nav-links li{
+margin:15px 0;
+}
+
+} */
+
+
+/* AMELIORATION DU SCROLL MOBILE */
+html{
+scroll-behavior:smooth;
 }
